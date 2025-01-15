@@ -55,7 +55,7 @@ pages = {
 if st.session_state.logged_in:
     # Main Page (Logged-in content)
     with st.sidebar:
-        menu = st.popover(f'{st.session_state.username_input}')
+        menu = st.popover(f'{USERS["name"]}')
         menu.markdown("###### Line1")
         menu.markdown("###### Line2")
         menu.markdown("###### Line3")
@@ -64,8 +64,8 @@ if st.session_state.logged_in:
         menu.markdown("###### Line6")
         menu.markdown("###### Line7")
     st.sidebar.button("Logout", on_click=handle_logout)  # Logout button in sidebar
-    st.title("Welcome to the Dashboard!")
-    st.write("You are logged in.")
+    # st.title("Welcome to the Dashboard!")
+    # st.write("You are logged in.")
     
     pg = st.navigation(pages)
     pg.run()
