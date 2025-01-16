@@ -26,14 +26,14 @@ def handle_login():
     if username == USERS["username"] and password == USERS["password"]:
         st.session_state.logged_in = True
         st.session_state.login_error = False
-        st.set_page_config(initial_sidebar_state="expanded")
+        
     else:
         st.session_state.login_error = True
 
 # Logout function
 def handle_logout():
     st.session_state.logged_in = False
-    st.set_page_config(initial_sidebar_state="collapsed")
+    
     st.markdown(no_sidebar_style, unsafe_allow_html=True)
 
 pages = {
@@ -54,6 +54,7 @@ pages = {
     
 if st.session_state.logged_in:
     # Main Page (Logged-in content)
+    st.set_page_config(initial_sidebar_state="expanded")
     with st.sidebar:
         menu = st.popover(f'{USERS["name"]}')
         menu.markdown("###### Line1")
@@ -71,6 +72,7 @@ if st.session_state.logged_in:
     pg.run()
 
 elif not st.session_state.logged_in:
+    st.set_page_config(initial_sidebar_state="collapsed")
     # Login Page
     st.title("Login")
 
